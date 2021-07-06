@@ -100,7 +100,7 @@
   position: relative;
 }
 .header-image-container{
-    background-image: url("https://com-syndafy-dealgrace-static.s3.us-east-2.amazonaws.com/towing-desktop_1gmhg4fwkm4asvzv_.jpg");
+    /* background-image: url("https://com-syndafy-dealgrace-static.s3.us-east-2.amazonaws.com/towing-desktop_1gmhg4fwkm4asvzv_.jpg"); */
     height: 350px;
     background-size: cover;
     background-position: center;

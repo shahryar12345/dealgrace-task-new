@@ -1,20 +1,62 @@
 import React, { useEffect, useState, createContext } from "react";
-import { getRequestForm } from "../services/request-form-service";
+import { getCategory, getRequestForm, getService } from "../services/request-form-service";
 import { FormContext } from "./FormContext";
 import Section from "./section";
+import useWindowDimensions from "../custome-hooks/windowsDimension";
 const RequestForm = () => {
  const [formJsonState, setformJsonState] = useState(null);
+ const [serviceCategoryJson, setServiceCategoryJson] = useState({
+  service: null,
+  category: null,
+ });
+ const [headerImageURLState, setheaderImageURLState] = useState(null);
 
- const [sectionKey, setsectionKey] = useState(1);
+ const { height, width } = useWindowDimensions();
 
- const getRequestFormJson = async () => {
+ const getJsonsFromAPI = async () => {
   const response = await getRequestForm();
   console.log(response);
   setformJsonState(response);
+
+  // Now Call the service and Category API to fetch the data
+  let serviceData = await getService();
+  let categoryData = await getCategory();
+
+  setServiceCategoryJson({ service: serviceData, category: categoryData });
+  console.log("Service json : ", serviceData);
+  console.log("Category json : ", categoryData);
+  setHeaderImageURL(serviceData, categoryData);
+ };
+
+ const setHeaderImageURL = (serviceData, categoryData) => {
+  // select the default header images according to screen size
+  if (width <= 600) {
+   // for mobile
+   // if image is assigned to service it will  precedence over category image.
+   if (serviceData.data.diwM) {
+    setheaderImageURLState(serviceData.data.diwM);
+   } else {
+    setheaderImageURLState(categoryData.data[0].diwM.URL);
+   }
+  } else {
+   // for desktop
+   // if image is assigned to service it will  precedence over category image.
+   if (serviceData.data.diwD) {
+    setheaderImageURLState(serviceData.data.diwD);
+   } else {
+    setheaderImageURLState(categoryData.data[0].diwD.URL);
+   }
+  }
  };
 
  useEffect(() => {
-  getRequestFormJson();
+  if (serviceCategoryJson.service && serviceCategoryJson.category) {
+   setHeaderImageURL(serviceCategoryJson.service, serviceCategoryJson.category);
+  }
+ }, [width]);
+
+ useEffect(() => {
+  getJsonsFromAPI();
  }, []);
 
  const handleChange = (e, type, fieldId, sectionId) => {
@@ -61,11 +103,16 @@ const RequestForm = () => {
  return (
   <>
    <div className="row">
-    <div className="header-image-container"></div>
+    <div className="header-image-container" style={{ backgroundImage: "url(" + headerImageURLState + ")" }}></div>
     <div className="col-12">
      <p className="request-form-heading">
       Book a Tow <span className="blue-bold-text">On-Demand For Less</span>
      </p>
+     {/* <p>
+      <div>
+       width: {width} ~ height: {height}
+      </div>
+     </p> */}
     </div>
    </div>
 
