@@ -1,8 +1,11 @@
-import React, { useEffect, useState, createContext } from "react";
+import React, { useEffect, useState } from "react";
+
 import { getCategory, getRequestForm, getService } from "../services/request-form-service";
 import { FormContext } from "./FormContext";
 import Section from "./section";
 import useWindowDimensions from "../custome-hooks/windowsDimension";
+import PageHeader from "./page-header";
+import PageFooter from "./page-footer";
 const RequestForm = () => {
  const [formJsonState, setformJsonState] = useState(null);
  const [serviceCategoryJson, setServiceCategoryJson] = useState({
@@ -103,16 +106,12 @@ const RequestForm = () => {
  return (
   <>
    <div className="row">
+    <PageHeader />
     <div className="header-image-container" style={{ backgroundImage: "url(" + headerImageURLState + ")" }}></div>
     <div className="col-12">
      <p className="request-form-heading">
       Book a Tow <span className="blue-bold-text">On-Demand For Less</span>
      </p>
-     {/* <p>
-      <div>
-       width: {width} ~ height: {height}
-      </div>
-     </p> */}
     </div>
    </div>
 
@@ -143,6 +142,12 @@ const RequestForm = () => {
    ) : (
     <h1>Loading....</h1>
    )}
+
+   <div className="row">
+    <div className="col-12 footer-col">
+     <PageFooter />
+    </div>
+   </div>
   </>
  );
 };
