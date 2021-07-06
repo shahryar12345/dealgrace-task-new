@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-
 import { getCategory, getRequestForm, getService } from "../services/request-form-service";
 import { FormContext } from "./FormContext";
 import Section from "./section";
 import useWindowDimensions from "../custome-hooks/windowsDimension";
 import PageHeader from "./page-header";
 import PageFooter from "./page-footer";
+
 const RequestForm = () => {
  const [formJsonState, setformJsonState] = useState(null);
  const [serviceCategoryJson, setServiceCategoryJson] = useState({
@@ -17,90 +17,118 @@ const RequestForm = () => {
  const { height, width } = useWindowDimensions();
 
  const getJsonsFromAPI = async () => {
-  const response = await getRequestForm();
-  console.log(response);
-  setformJsonState(response);
+  try {
+   const response = await getRequestForm();
+   console.log(response);
+   setformJsonState(response);
 
-  // Now Call the service and Category API to fetch the data
-  let serviceData = await getService();
-  let categoryData = await getCategory();
+   // Now Call the service and Category API to fetch the data
+   let serviceData = await getService();
+   let categoryData = await getCategory();
 
-  setServiceCategoryJson({ service: serviceData, category: categoryData });
-  console.log("Service json : ", serviceData);
-  console.log("Category json : ", categoryData);
-  setHeaderImageURL(serviceData, categoryData);
+   setServiceCategoryJson({ service: serviceData, category: categoryData });
+   setHeaderImageURL(serviceData, categoryData);
+  } catch (e) {
+   console.log("Getting error from Json APIs");
+  }
  };
 
  const setHeaderImageURL = (serviceData, categoryData) => {
-  // select the default header images according to screen size
-  if (width <= 600) {
-   // for mobile
-   // if image is assigned to service it will  precedence over category image.
-   if (serviceData.data.diwM) {
-    setheaderImageURLState(serviceData.data.diwM);
+  try {
+   // select the default header images according to screen size
+   if (width <= 600) {
+    // for mobile
+    // if image is assigned to service it will  precedence over category image.
+    if (serviceData?.data?.diwM) {
+     setheaderImageURLState(serviceData?.data?.diwM);
+    } else {
+     setheaderImageURLState(categoryData?.data[0]?.diwM?.URL);
+    }
    } else {
-    setheaderImageURLState(categoryData.data[0].diwM.URL);
+    // for desktop
+    // if image is assigned to service it will  precedence over category image.
+    if (serviceData?.data?.diwD) {
+     setheaderImageURLState(serviceData?.data?.diwD);
+    } else {
+     setheaderImageURLState(categoryData?.data[0]?.diwD?.URL);
+    }
    }
-  } else {
-   // for desktop
-   // if image is assigned to service it will  precedence over category image.
-   if (serviceData.data.diwD) {
-    setheaderImageURLState(serviceData.data.diwD);
-   } else {
-    setheaderImageURLState(categoryData.data[0].diwD.URL);
-   }
+  } catch (e) {
+   console.log("Error while setting Header image URL");
   }
  };
 
  useEffect(() => {
   if (serviceCategoryJson.service && serviceCategoryJson.category) {
+   // Set the Header URL when screen width is changed
    setHeaderImageURL(serviceCategoryJson.service, serviceCategoryJson.category);
   }
  }, [width]);
 
  useEffect(() => {
+  // Call method to hit APIs and get the required data
   getJsonsFromAPI();
  }, []);
 
  const handleChange = (e, type, fieldId, sectionId) => {
-  e.preventDefault();
-  let updatedValue = "";
-  if (type === "none") {
-   // update text field value here
-   updatedValue = e.target.value;
-   console.log(e.target.value);
-  } else if (type === "multi" || type === "radio") {
-   //update checkboxes value here
-   updatedValue = e.target.checked;
-   console.log(e.target.checked);
-  }
+  try {
+   e.preventDefault();
+   let updatedValue = "";
+   if (type === "none") {
+    // update text field value here
+    updatedValue = e.target.value;
+    console.log(e.target.value);
+   } else if (type === "multi" || type === "radio") {
+    //update checkboxes value here
+    updatedValue = e.target.checked;
+    console.log(e.target.checked);
+   }
 
-  // Update the value in states
-  const updatedState = formJsonState;
-  let updatedSectionIndex = updatedState.data["0"].formData.formPages[0].sections.findIndex((item) => {
-   return item.sectionID === sectionId;
-  });
-  let updatedSectionObject = updatedState.data["0"].formData.formPages[0].sections[updatedSectionIndex];
-  if (updatedSectionObject.type === "none" || updatedSectionObject.type === "multi") {
-   updatedSectionObject.fields.forEach((field) => {
-    if (field.fieldID === fieldId) {
-     field.value = updatedValue;
-    }
+   // Update the value in states
+   const updatedState = formJsonState;
+   let updatedSectionIndex = updatedState?.data["0"]?.formData?.formPages[0]?.sections.findIndex((item) => {
+    return item?.sectionID === sectionId;
    });
-  } else if (updatedSectionObject.type === "radio") {
-   // in case of radio type , de-select other field values and change onlu current field value.
-   updatedSectionObject.fields.forEach((field) => {
-    if (field.fieldID === fieldId) {
-     field.value = updatedValue;
-    } else {
-     field.value = false;
-    }
-   });
-  }
+   let updatedSectionObject = updatedState?.data["0"]?.formData?.formPages[0]?.sections[updatedSectionIndex];
+   if (updatedSectionObject?.type === "none" || updatedSectionObject?.type === "multi") {
+    updatedSectionObject?.fields.forEach((field) => {
+     if (field?.fieldID === fieldId) {
+      field.value = updatedValue;
+     }
+    });
+   } else if (updatedSectionObject?.type === "radio") {
+    // in case of radio type , de-select other field values and change onlu current field value.
+    updatedSectionObject?.fields?.forEach((field) => {
+     if (field?.fieldID === fieldId) {
+      field.value = field?.value === true ? true : updatedValue;
+     } else {
+      field.value = false;
+     }
+    });
+   }
 
-  updatedState.data["0"].formData.formPages[0].sections[updatedSectionIndex] = updatedSectionObject;
-  setformJsonState(JSON.parse(JSON.stringify(updatedState)));
-  console.log("updated states : ", updatedState);
+   updatedState.data["0"].formData.formPages[0].sections[updatedSectionIndex] = updatedSectionObject;
+   setformJsonState(JSON.parse(JSON.stringify(updatedState)));
+   console.log("updated states : ", updatedState);
+  } catch (e) {
+   console.log("Error occur while handling change in fields");
+  }
+ };
+
+ const getHeading = () => {
+  try {
+   let headingText = serviceCategoryJson?.service?.data?.heading;
+   let highLigtedText = serviceCategoryJson?.service?.data?.headingHighlightedText;
+   return (
+    <p className="request-form-heading">
+     {headingText?.substring(0, headingText.indexOf(highLigtedText))}
+     <span className="blue-bold-text">{highLigtedText}</span>
+     {headingText?.substring(headingText.indexOf(highLigtedText) + highLigtedText.length)}
+    </p>
+   );
+  } catch (e) {
+   console.log("Getting Error While Getting Dynamic Page Heading.");
+  }
  };
 
  return (
@@ -108,11 +136,7 @@ const RequestForm = () => {
    <div className="row">
     <PageHeader />
     <div className="header-image-container" style={{ backgroundImage: "url(" + headerImageURLState + ")" }}></div>
-    <div className="col-12">
-     <p className="request-form-heading">
-      Book a Tow <span className="blue-bold-text">On-Demand For Less</span>
-     </p>
-    </div>
+    <div className="col-12">{getHeading()}</div>
    </div>
 
    {formJsonState !== null ? (
@@ -131,6 +155,15 @@ const RequestForm = () => {
         </div>
         <div className="row">
          <div className="col-12">
+          <div></div> 
+         </div>
+        </div>
+        <div className="row">
+         <div className="col-12"></div>
+        </div>
+
+        <div className="row">
+         <div className="col-12 submit-button-container">
           <input type={"submit"} className="submit-button"></input>
          </div>
         </div>
