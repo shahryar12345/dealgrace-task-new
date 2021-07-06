@@ -1,11 +1,12 @@
-import React from "react";
-const TextInputField = () => {
- const handle = (e) => {
-  console.log(e.target.value);
- };
+import React, { useContext } from "react";
+import { FormContext } from "./FormContext";
+const TextInputField = ({ fieldDetail, sectionId }) => {
+
+ const { handleChange } = useContext(FormContext);
  return (
   <>
-   <input className="text-input-field" type="text" onChange={(e) => handle(e)}></input>
+   <label key={"inputField-label"+fieldDetail.fieldID} className={"text-input-field-label"}>{fieldDetail.name}</label>
+   <input key={"inputField-"+fieldDetail.fieldID} className="text-input-field" required={"required"} type="text" onChange={(e) => handleChange(e, "none", fieldDetail.fieldID, sectionId)} placeholder={fieldDetail.placeholder}></input>
   </>
  );
 };
