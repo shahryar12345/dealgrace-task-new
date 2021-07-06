@@ -10,8 +10,8 @@ const Section = ({ sectionDetails }) => {
 
    {sectionDetails.fields.map((field) => {
     return (
-     <div className={sectionDetails.fields.length >= 2 ? "col-6" : "col-12"}>
-      <InputField key={"InputField"+field.fieldID} fieldDetail={field} type={sectionDetails.type} sectionId={sectionDetails.sectionID}/>
+     <div className={sectionDetails.fields.length >= 2 && sectionDetails.type === "none" ? "col-6" : sectionDetails.type !== "none" ? "col-3" : "col-12"}>
+      <InputField key={"InputField" + field.fieldID} fieldDetail={field} type={sectionDetails.type} sectionId={sectionDetails.sectionID} />
      </div>
     );
    })}
