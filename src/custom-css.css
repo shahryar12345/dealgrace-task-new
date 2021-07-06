@@ -28,9 +28,15 @@
 .request-form-container {
  background-color: white;
  border-radius: 10px;
+ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .request-form-sidebar {
  background-color: white;
+ border-radius: 15px;
+ /* width: 18%; */
+ margin-left: 5%;
+ min-height: 1000px;
+ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .request-form-heading {
@@ -163,7 +169,7 @@
     height: 35px;
     width: 100px;
     position: absolute;
-    right: 0px;
+    right: 40px;
     background-color: #3989ea !important;
     top: 20px;
     border-radius: 5px;
@@ -186,13 +192,25 @@
   text-decoration: none;
 }
 
+.menu-icon-container
+{
+  position: absolute;
+  right: 0px;
+  top: 27px;
+}
+
+.menu-icon
+{
+
+}
 
 /* Footer */
 
 .footer-container
 {
   margin: auto;
-  height: 60px;
+  min-height: 60px;
+  height: auto;
   color: white;
 
 }
@@ -226,6 +244,91 @@
 .footerRight a{
 text-decoration: none;
 color: white;
+}
+
+
+
+/* PhotoUpload */
+.UploadPhoto-container
+{
+  min-height: 60px;
+  border-radius: 15px;
+  border: 1px solid black;
+  margin-top: 25px;
+  margin-bottom: 5px;
+}
+.UploadPhoto-heading
+{
+  font-weight: bold;
+  position: relative;
+  top: 16px;
+  right: -20px;
+  float: left;
+}
+
+.UploadPhoto-Icon
+{
+  font-weight: bold;
+  position: relative;
+  top: 8px;
+  left: -20px;
+  float: right;
+  font-size: 30px;
+}
+
+.UploadPhoto-Content
+{
+  min-height: 100px;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 36px;
+  width: 70%;
+  margin-left: 15%;
+  margin-top: 6%;
+  margin-bottom: 1%;
+  border-radius: 15px;
+  border: 1px solid black;
+}
+
+
+/* PromoCode */
+.PromoCode-container
+{
+  min-height: 60px;
+  border-radius: 15px;
+  border: 1px solid black;
+}
+.PromoCode-heading
+{
+  font-weight: bold;
+  position: relative;
+  top: 16px;
+  right: -20px;
+  float: left;
+}
+
+.PromoCode-Icon
+{
+  font-weight: bold;
+  position: relative;
+  top: 8px;
+  left: -20px;
+  float: right;
+  font-size: 30px;
+}
+
+.PromoCode-Content
+{
+  min-height: 100px;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 36px;
+  width: 70%;
+  margin-left: 15%;
+  margin-top: 6%;
+  margin-bottom: 1%;
+  border-radius: 15px;
+  border: 1px solid black;
 }
 
 

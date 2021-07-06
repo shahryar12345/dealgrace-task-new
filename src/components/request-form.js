@@ -5,6 +5,8 @@ import Section from "./section";
 import useWindowDimensions from "../custome-hooks/windowsDimension";
 import PageHeader from "./page-header";
 import PageFooter from "./page-footer";
+import UploadPhoto from "./upload-photo";
+import PromoCode from "./propmo-code";
 
 const RequestForm = () => {
  const [formJsonState, setformJsonState] = useState(null);
@@ -142,7 +144,7 @@ const RequestForm = () => {
    {formJsonState !== null ? (
     <div className="row request-form-container-row">
      <FormContext.Provider value={{ handleChange }}>
-      <div className="col-10 request-form-container">
+      <div className="col-9 request-form-container">
        <form>
         <div className="row">
          {formJsonState.data["0"].formData.formPages[0].sections.map((section) => {
@@ -155,11 +157,13 @@ const RequestForm = () => {
         </div>
         <div className="row">
          <div className="col-12">
-          <div></div> 
+          <UploadPhoto />
          </div>
         </div>
         <div className="row">
-         <div className="col-12"></div>
+         <div className="col-12">
+          <PromoCode />
+         </div>
         </div>
 
         <div className="row">
@@ -170,7 +174,7 @@ const RequestForm = () => {
        </form>
       </div>
      </FormContext.Provider>
-     <div className="col-2 request-form-sidebar"></div>
+     <div className="col-3 request-form-sidebar" style={{width:"18%"}}></div>
     </div>
    ) : (
     <h1>Loading....</h1>

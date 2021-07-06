@@ -3,8 +3,8 @@ import React from "react";
 const PageFooter = () => {
  return (
   <div className="footer-container">
-   <div class="footerLeft">© 2021 Syndafy Inc.</div>
-   <div class="footerRight">
+   <div className="footerLeft">© 2021 Syndafy Inc.</div>
+   <div className="footerRight">
     <a href={"#"}>How it works</a>
     <span> </span>
 

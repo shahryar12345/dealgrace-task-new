@@ -1,4 +1,5 @@
 import logo from "../images/dealgrace_logo.png";
+import menuIcon from "../images/hamburger-icon.svg"
 import React from "react";
 
 const PageHeader = () => {
@@ -14,6 +15,9 @@ const PageHeader = () => {
      <a href="#" className="login-button">
       Login
      </a>
+    </div>
+    <div className={"menu-icon-container"}>
+    <img alt="logo-" src={menuIcon} className="menu-icon"></img>
     </div>
    </div>
   </div>
