@@ -11,7 +11,7 @@ const PromoCode = () => {
    <div className={"PromoCode-Icon"}>
     <span>+</span>
    </div>
-   {toggleState && <div className={"PromoCode-Content"}>Feature comming soon.</div>}
+   {toggleState && <div className={"PromoCode-Content"}>Feature coming soon.</div>}
   </div>
  );
 };

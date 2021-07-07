@@ -6,7 +6,8 @@ import useWindowDimensions from "../custome-hooks/windowsDimension";
 import PageHeader from "./page-header";
 import PageFooter from "./page-footer";
 import UploadPhoto from "./upload-photo";
-import PromoCode from "./propmo-code";
+import PromoCode from "./promo-code";
+import IconPanel from "./icon-panel";
 
 const RequestForm = () => {
  const [formJsonState, setformJsonState] = useState(null);
@@ -138,20 +139,22 @@ const RequestForm = () => {
    <div className="row">
     <PageHeader />
     <div className="header-image-container" style={{ backgroundImage: "url(" + headerImageURLState + ")" }}>
-    <div className="col-12 request-form-heading-container-mobile">{getHeading()}</div>
+     <div className="col-12 request-form-heading-container-mobile">{getHeading()}</div>
     </div>
     <div className="col-12 request-form-heading-container-desktop">{getHeading()}</div>
    </div>
 
+   <IconPanel />
+
    {formJsonState !== null ? (
     <div className="row request-form-container-row">
      <FormContext.Provider value={{ handleChange }}>
-      <div className="col-9 request-form-container">
+      <div className="col-10 col-m-12 request-form-container">
        <form>
         <div className="row">
          {formJsonState.data["0"].formData.formPages[0].sections.map((section) => {
           return (
-           <div className="col-12">
+           <div className="col-12 col-m-12">
             <Section key={section.sectionID} sectionDetails={section}></Section>
            </div>
           );
@@ -169,14 +172,13 @@ const RequestForm = () => {
         </div>
 
         <div className="row">
-         <div className="col-12 submit-button-container">
+         <div className="col-12  submit-button-container">
           <input type={"submit"} className="submit-button"></input>
          </div>
         </div>
        </form>
       </div>
      </FormContext.Provider>
-     <div className="col-3 request-form-sidebar" style={{width:"18%"}}></div>
     </div>
    ) : (
     <h1>Loading....</h1>
