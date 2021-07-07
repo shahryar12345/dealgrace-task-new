@@ -269,11 +269,17 @@ color: white;
 .UploadPhoto-Icon
 {
   font-weight: bold;
-  position: relative;
-  top: 8px;
-  left: -20px;
-  float: right;
-  font-size: 30px;
+    position: relative;
+    top: 10px;
+    left: -20px;
+    float: right;
+    font-size: 30px;
+    background-color: black;
+    color: white;
+    border-radius: 52px;
+    width: 45px;
+    text-align: center;
+    padding-bottom: 5px;
 }
 
 .UploadPhoto-Content
@@ -310,11 +316,17 @@ color: white;
 .PromoCode-Icon
 {
   font-weight: bold;
-  position: relative;
-  top: 8px;
-  left: -20px;
-  float: right;
-  font-size: 30px;
+    position: relative;
+    top: 10px;
+    left: -20px;
+    float: right;
+    font-size: 30px;
+    background-color: black;
+    color: white;
+    border-radius: 52px;
+    width: 45px;
+    text-align: center;
+    padding-bottom: 5px;
 }
 
 .PromoCode-Content
