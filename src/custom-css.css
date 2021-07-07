@@ -30,13 +30,25 @@
  border-radius: 10px;
  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
 .request-form-sidebar {
- background-color: white;
- border-radius: 15px;
- /* width: 18%; */
- margin-left: 5%;
- min-height: 1000px;
- box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+ display: none;
+}
+
+.request-form-heading-container-mobile
+{
+  background: linear-gradient(to bottom, #00000000, #2e2c47);
+  width: 100%;
+  bottom: 0px;
+  position: absolute;
+  height: auto;
+  padding: 20px 0px 50px 0px;
+  display: block;
+  color: white;
+}
+.request-form-heading-container-desktop
+{
+  display: none;
 }
 
 .request-form-heading {
@@ -44,6 +56,7 @@
  font-weight: bold;
  font-size: 30px;
 }
+
 .blue-bold-text {
  color: skyblue;
 }
@@ -79,7 +92,6 @@
  color: blue;
  }
 
- 
 .requiredIcon {
  font-size: 29px;
  background-color: transparent;
@@ -100,6 +112,7 @@
 {
   text-align: center;
 }
+
 .submit-button
 {
   font-family: "Roboto",sans-serif !important;
@@ -117,8 +130,8 @@
   position: relative;
   margin: 30px;
 }
+
 .header-image-container{
-    /* background-image: url("https://com-syndafy-dealgrace-static.s3.us-east-2.amazonaws.com/towing-desktop_1gmhg4fwkm4asvzv_.jpg"); */
     height: 350px;
     background-size: cover;
     background-position: center;
@@ -343,46 +356,6 @@ color: white;
   border: 1px solid black;
 }
 
-
-@media only screen and (min-width: 600px) {
- /* For tablets: */
- .col-s-1 {
-  width: 8.33%;
- }
- .col-s-2 {
-  width: 16.66%;
- }
- .col-s-3 {
-  width: 25%;
- }
- .col-s-4 {
-  width: 33.33%;
- }
- .col-s-5 {
-  width: 41.66%;
- }
- .col-s-6 {
-  width: 50%;
- }
- .col-s-7 {
-  width: 58.33%;
- }
- .col-s-8 {
-  width: 66.66%;
- }
- .col-s-9 {
-  width: 75%;
- }
- .col-s-10 {
-  width: 83.33%;
- }
- .col-s-11 {
-  width: 91.66%;
- }
- .col-s-12 {
-  width: 100%;
- }
-}
 @media only screen and (min-width: 768px) {
  /* For desktop: */
  .col-1 {
@@ -426,4 +399,30 @@ color: white;
   margin-left: 150px;
   margin-right: 150px;
  }
+
+ .request-form-sidebar {
+  display: block;
+  background-color: white;
+  border-radius: 15px;
+  margin-left: 5%;
+  min-height: 1000px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+ }
+
+ .request-form-heading-container-desktop
+{
+  background: none;
+  width: 100%;
+  position: unset;
+  height: auto;
+  padding: 0px;
+  display: block;
+  color:black;
+}
+.request-form-heading-container-mobile
+{
+  display: none;
+}
+
+
 }

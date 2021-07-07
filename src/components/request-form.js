@@ -137,8 +137,10 @@ const RequestForm = () => {
   <>
    <div className="row">
     <PageHeader />
-    <div className="header-image-container" style={{ backgroundImage: "url(" + headerImageURLState + ")" }}></div>
-    <div className="col-12">{getHeading()}</div>
+    <div className="header-image-container" style={{ backgroundImage: "url(" + headerImageURLState + ")" }}>
+    <div className="col-12 request-form-heading-container-mobile">{getHeading()}</div>
+    </div>
+    <div className="col-12 request-form-heading-container-desktop">{getHeading()}</div>
    </div>
 
    {formJsonState !== null ? (
