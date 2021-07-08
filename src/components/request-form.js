@@ -119,6 +119,11 @@ const RequestForm = ({ match }) => {
   }
  };
 
+ const handleSubmit = (e) => {
+  e.preventDefault();
+  console.log("Submitted JSON ", formJsonState?.data["0"]);
+ };
+
  const getHeading = () => {
   try {
    let headingText = serviceCategoryJson?.service?.data?.heading;
@@ -180,7 +185,7 @@ const RequestForm = ({ match }) => {
 
          <div className="row">
           <div className="col-12  submit-button-container">
-           <input type={"submit"} className="submit-button"></input>
+           <input type={"submit"} value={"Submit"} onSubmit={(e) => handleSubmit(e)} className="submit-button"></input>
           </div>
          </div>
         </form>
@@ -190,8 +195,7 @@ const RequestForm = ({ match }) => {
     </>
    ) : (
     <div className="form-loading-text-container">
-
-        <h4>Loading form....</h4>
+     <h4>Loading form....</h4>
     </div>
    )}
 
