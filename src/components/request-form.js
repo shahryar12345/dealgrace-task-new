@@ -78,7 +78,7 @@ const RequestForm = ({ match }) => {
   try {
    e.preventDefault();
    let updatedValue = "";
-   if (type === "none") {
+   if (type === "none" || type === "notes") {
     // update text field value here
     updatedValue = e.target.value;
     console.log(e.target.value);
@@ -94,7 +94,7 @@ const RequestForm = ({ match }) => {
     return item?.sectionID === sectionId;
    });
    let updatedSectionObject = updatedState?.data["0"]?.formData?.formPages[0]?.sections[updatedSectionIndex];
-   if (updatedSectionObject?.type === "none" || updatedSectionObject?.type === "multi") {
+   if (updatedSectionObject?.type !== "radio") {
     updatedSectionObject?.fields.forEach((field) => {
      if (field?.fieldID === fieldId) {
       field.value = updatedValue;

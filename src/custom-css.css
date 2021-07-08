@@ -204,10 +204,33 @@
   font-size: 14px;
  }
 
+ .text-area-input-field {
+  width: 100%;
+  height: 114px;
+  font-size: 12px;
+  border-radius: 15px;
+  background-color: #f9f9f9;
+  margin-top: 5px;
+  border: 1px #ebebeb solid;
+  padding-left: 15px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+ }
+
+ .text-area-input-field:focus {
+  border: 1px solid #00234b;
+ }
+
+ .text-area-input-field-label {
+  color: #00234b;
+  font-size: 14px;
+ }
+
  .checkbox-field-container {
   border: 1px #ebebeb solid;
   border-radius: 15px;
-  max-width: 250px;
+  max-width: 100%;
   background-color: #fefefe;
   height: 45px;
   vertical-align: middle;
@@ -244,6 +267,22 @@
   -moz-user-select: none;
   user-select: none;
  }
+
+ .requiredIcon-text-area {
+    font-size: 29px;
+    background-color: transparent;
+    padding: none;
+    position: absolute;
+    line-height: 0;
+    z-index: 1;
+    right: 10px;
+    top: 60%;
+    color: #ff5457;
+    font-weight: 700;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+   }
 
  .submit-button-container {
   text-align: center;
@@ -388,7 +427,7 @@
   padding-right: 5px;
  }
 
- /* PhotoUpload */
+ /* PhotoUpload mobile */
  .UploadPhoto-container {
   min-height: 60px;
   border-radius: 15px;
@@ -437,13 +476,14 @@
   background-color: #fefefe;
  }
 
- /* PromoCode */
+ /* PromoCode mobile*/
  .PromoCode-container {
   min-height: 60px;
   border-radius: 15px;
   border: 1px solid #ebebeb;
   background-color: #fefefe;
  }
+
  .PromoCode-heading {
   font-weight: bold;
   position: relative;
@@ -574,7 +614,7 @@
 
  .text-input-field {
   width: 100%;
-  line-height: 55px;
+  height: 55px;
   font-size: 12px;
   border-radius: 15px;
   background-color: #f9f9f9;
@@ -588,10 +628,33 @@
   font-size: 14px;
  }
 
+ .text-area-input-field {
+  width: 100%;
+  height: 114px;
+  font-size: 12px;
+  border-radius: 15px;
+  background-color: #f9f9f9;
+  margin-top: 5px;
+  border: 1px #ebebeb solid;
+  padding-left: 15px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+ }
+
+ .text-area-input-field-label {
+  color: #00234b;
+  font-size: 14px;
+ }
+
+ .text-area-input-field:focus {
+  border: 1px solid #00234b;
+ }
+
  .checkbox-field-container {
   border: 1px #ebebeb solid;
   border-radius: 15px;
-  max-width: 250px;
+  max-width: 100%;
   background-color: #f9f9f9;
   height: 45px;
   vertical-align: middle;
@@ -756,7 +819,7 @@
   margin-top: 5%;
  }
 
- /* promo code */
+ /* promo code desktop */
  .PromoCode-container {
   min-height: 60px;
   border-radius: 15px;
