@@ -22,8 +22,7 @@ const IconPanel = () => {
       </div>
      </div>
     </div>
-    <hr className="side-bar-horizontal-line"></hr>
-    <div className="col-12 col-m-4 vertical-right-border reduce-padding vertical-left-border">
+    <div className="col-12 col-m-4 vertical-right-border reduce-padding vertical-left-border icon-panel-top-border">
      <div className="row">
       <div className="col-12">
        <img alt="logo-dollar" src={dollarIcon} className="side-bar-icons reduce-top-margin"></img>
@@ -33,8 +32,7 @@ const IconPanel = () => {
       </div>
      </div>
     </div>
-    <hr className="side-bar-horizontal-line"></hr>
-    <div className="col-12 col-m-4 reduce-padding">
+    <div className="col-12 col-m-4 reduce-padding icon-panel-top-border">
      <div className="row request-bar-lifted-icon">
       <div className="col-12">
        <img alt="logo-people" src={peopleIcon} className="side-bar-icons"></img>
