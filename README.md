@@ -11,16 +11,16 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-Different routes information
+Different routes information.
 
-http://localhost:3000   : will open "Car Towing Service" page (Default)
-http://localhost:3000/0 : will open "Car Towing Service" page (Default)
-http://localhost:3000/1 : will open "Alternator Replacement" page
-http://localhost:3000/2 : will open "Ceiling Fan Installation" page
-http://localhost:3000/3 : will open "Surface Disinfecting" page
+http://localhost:3000   : will open "Car Towing Service" page (Default). \
+http://localhost:3000/0 : will open "Car Towing Service" page (Default). \
+http://localhost:3000/1 : will open "Alternator Replacement" page. \
+http://localhost:3000/2 : will open "Ceiling Fan Installation" page. \
+http://localhost:3000/3 : will open "Surface Disinfecting" page.
 
 
-The page will reload if you make edits.\
+The page will reload if you make edits.
 You will also see any lint errors in the console.
 
 ### `yarn test`
