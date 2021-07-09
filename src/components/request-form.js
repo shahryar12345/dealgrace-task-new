@@ -123,11 +123,40 @@ const RequestForm = ({ match }) => {
  };
 
  const handleSubmit = (e) => {
-  e.preventDefault();
+  try {
+   e.preventDefault();
+   setformSubmitState(true);
+   if (validateForm()) {
+    // show success msg here.
+    window.location.reload(true);
+   }
+   console.log("Submitted JSON ", formJsonState?.data["0"]);
+  } catch (e) {
+   console.log("Error in form submit.");
+  }
+ };
 
-  setformSubmitState(true);
-
-  console.log("Submitted JSON ", formJsonState?.data["0"]);
+ const validateForm = () => {
+  let isValid = true;
+  formJsonState?.data["0"]?.formData?.formPages[0]?.sections.forEach((section, sectionIndex) => {
+   if (section?.type === "none" || section?.type === "notes") {
+    section?.fields?.forEach((field) => {
+     if (field?.required && !field?.value) {
+      isValid = false;
+     }
+    });
+   } else if (section?.type === "radio" || section?.type === "multi") {
+    if (section?.fields[0]?.required) {
+     isValid = false;
+     section?.fields.forEach((field) => {
+      if (field?.value) {
+       isValid = true;
+      }
+     });
+    }
+   }
+  });
+  return isValid;
  };
 
  const getHeading = () => {
