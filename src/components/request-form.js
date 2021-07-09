@@ -16,6 +16,7 @@ const RequestForm = ({ match }) => {
   category: null,
  });
  const [headerImageURLState, setheaderImageURLState] = useState(null);
+ const [formSubmitState, setformSubmitState] = useState(false);
 
  const { width } = useWindowDimensions();
 
@@ -67,13 +68,13 @@ const RequestForm = ({ match }) => {
    // Set the Header URL when screen width is changed
    setHeaderImageURL(serviceCategoryJson.service, serviceCategoryJson.category);
   }
- // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [width]);
 
  useEffect(() => {
   // Call method to hit APIs and get the required data
   getJsonsFromAPI();
- // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
  }, []);
 
  const handleChange = (e, type, fieldId, sectionId) => {
@@ -123,6 +124,9 @@ const RequestForm = ({ match }) => {
 
  const handleSubmit = (e) => {
   e.preventDefault();
+
+  setformSubmitState(true);
+
   console.log("Submitted JSON ", formJsonState?.data["0"]);
  };
 
@@ -175,7 +179,7 @@ const RequestForm = ({ match }) => {
           {formJsonState?.data["0"]?.formData?.formPages[0]?.sections.map((section, sectionIdex) => {
            return (
             <div id={"section-col-" + section?.sectionID + "-" + sectionIdex} key={"section-col-" + section?.sectionID + "-" + sectionIdex} className="col-12 col-m-12">
-             <Section key={section?.sectionID} sectionDetails={section}></Section>
+             <Section key={section?.sectionID} sectionDetails={section} formSubmit={formSubmitState}></Section>
             </div>
            );
           })}
@@ -193,7 +197,7 @@ const RequestForm = ({ match }) => {
 
          <div key={"submit-btn-row-key"} id={"submit-btn-row-key"} className="row">
           <div key={"submit-btn-col-key"} id={"submit-btn-col-key"} className="col-12  submit-button-container">
-           <input key={"submit-btn-key"} id={"submit-btn-key"} type={"submit"} value={"Submit"} onSubmit={(e) => handleSubmit(e)} className="submit-button"></input>
+           <input key={"submit-btn-key"} id={"submit-btn-key"} type={"button"} value={"Submit"} onClick={(e) => handleSubmit(e)} className="submit-button"></input>
           </div>
          </div>
         </form>

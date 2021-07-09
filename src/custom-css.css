@@ -190,10 +190,6 @@
   outline: none;
  }
 
- .text-input-field:focus {
-  border: 1px solid #00234b;
- }
-
  .section-heading {
   font-size: 14px;
   color: #777777;
@@ -202,6 +198,7 @@
  .text-input-field-label {
   color: #00234b;
   font-size: 14px;
+  margin-left: 10px;
  }
 
  .text-area-input-field {
@@ -209,7 +206,7 @@
   height: 114px;
   font-size: 12px;
   border-radius: 15px;
-  background-color: #f9f9f9;
+  background-color: #fefefe;
   margin-top: 5px;
   border: 1px #ebebeb solid;
   padding-left: 15px;
@@ -218,13 +215,10 @@
   outline: none;
  }
 
- .text-area-input-field:focus {
-  border: 1px solid #00234b;
- }
-
  .text-area-input-field-label {
   color: #00234b;
   font-size: 14px;
+  margin-left: 10px;
  }
 
  .checkbox-field-container {
@@ -252,6 +246,32 @@
   color: #3f82ff;
  }
 
+ .invalid-text {
+  color: red;
+  font-size: 12px;
+  position: relative;
+  top: -9px;
+  background: #fafafb;
+  width: fit-content;
+  margin-left: 15px;
+ }
+
+ .invalid-text-text-area {
+  top: -14px;
+ }
+ .invalid-text-section {
+  color: red;
+  font-size: 12px;
+  position: relative;
+  width: fit-content;
+  margin-left: 10px;
+ }
+
+ .invalid-border {
+  border: 1px solid red;
+  background-color: #fafafb;
+ }
+
  .requiredIcon {
   font-size: 29px;
   background-color: transparent;
@@ -268,21 +288,26 @@
   user-select: none;
  }
 
+ .requiredIcon-form-submit
+ {
+   top: 62%;
+ }
+
  .requiredIcon-text-area {
-    font-size: 29px;
-    background-color: transparent;
-    padding: none;
-    position: absolute;
-    line-height: 0;
-    z-index: 1;
-    right: 10px;
-    top: 60%;
-    color: #ff5457;
-    font-weight: 700;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-   }
+  font-size: 29px;
+  background-color: transparent;
+  padding: none;
+  position: absolute;
+  line-height: 0;
+  z-index: 1;
+  right: 10px;
+  top: 60%;
+  color: #ff5457;
+  font-weight: 700;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+ }
 
  .submit-button-container {
   text-align: center;
@@ -613,6 +638,10 @@
 
  /* input field desktop */
 
+ .input-text-field-container {
+  min-height: 100px;
+ }
+
  .text-input-field {
   width: 100%;
   height: 55px;
@@ -627,6 +656,7 @@
  .text-input-field-label {
   color: #00234b;
   font-size: 14px;
+  margin-left: 10px;
  }
 
  .text-area-input-field {
@@ -646,10 +676,7 @@
  .text-area-input-field-label {
   color: #00234b;
   font-size: 14px;
- }
-
- .text-area-input-field:focus {
-  border: 1px solid #00234b;
+  margin-left: 10px;
  }
 
  .checkbox-field-container {
@@ -661,6 +688,25 @@
   vertical-align: middle;
   padding-top: 10px;
   padding-left: 15px;
+ }
+
+ .invalid-text {
+  color: red;
+  font-size: 12px;
+  position: relative;
+  top: -9px;
+  background: white;
+  width: fit-content;
+  margin-left: 15px;
+ }
+
+ .invalid-text-text-area {
+  top: -14px;
+ }
+
+ .invalid-border {
+  border: 1px solid red;
+  background-color: white;
  }
 
  /* Side Icon Bar desktop */
@@ -848,5 +894,13 @@
   text-align: center;
   margin-top: 50px;
   height: 450px;
+ }
+
+ .blue-bold-text {
+  color: #00a6f9;
+ }
+
+ .requiredIcon{
+   top: 62px;
  }
 }
