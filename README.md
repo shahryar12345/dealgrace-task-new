@@ -17,7 +17,7 @@ http://localhost:3000   : will open "Car Towing Service" page (Default). \
 http://localhost:3000/0 : will open "Car Towing Service" page (Default). \
 http://localhost:3000/1 : will open "Alternator Replacement" page. \
 http://localhost:3000/2 : will open "Ceiling Fan Installation" page. \
-http://localhost:3000/3 : will open "Surface Disinfecting" page.
+http://localhost:3000/3 : will open "Surface Disinfecting" page. 
 
 
 The page will reload if you make edits.
