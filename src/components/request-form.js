@@ -17,7 +17,7 @@ const RequestForm = ({ match }) => {
  });
  const [headerImageURLState, setheaderImageURLState] = useState(null);
 
- const { height, width } = useWindowDimensions();
+ const { width } = useWindowDimensions();
 
  const getJsonsFromAPI = async () => {
   try {
@@ -67,11 +67,13 @@ const RequestForm = ({ match }) => {
    // Set the Header URL when screen width is changed
    setHeaderImageURL(serviceCategoryJson.service, serviceCategoryJson.category);
   }
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [width]);
 
  useEffect(() => {
   // Call method to hit APIs and get the required data
   getJsonsFromAPI();
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, []);
 
  const handleChange = (e, type, fieldId, sectionId) => {
@@ -142,50 +144,56 @@ const RequestForm = ({ match }) => {
 
  return (
   <>
-   <div className="row">
-    <PageHeader />
+   <div key={"request-form-main-row"} id={"request-form-main-row"} className="row">
+    <PageHeader key={"page-header-key"} />
     {headerImageURLState !== null && headerImageURLState !== undefined ? (
      <>
-      <div className="header-image-container" style={{ backgroundImage: "url(" + headerImageURLState + ")" }}>
-       <div className="col-12 request-form-heading-container-mobile">{getHeading()}</div>
+      <div key={"header-image-container-key"} id={"header-image-container-key"} className="header-image-container" style={{ backgroundImage: "url(" + headerImageURLState + ")" }}>
+       <div key={"request-form-heading-container-mobile-key"} id={"request-form-heading-container-mobile-key"} className="col-12 request-form-heading-container-mobile">
+        {getHeading()}
+       </div>
       </div>
-      <div className="col-12 request-form-heading-container-desktop">{getHeading()}</div>
+      <div key={"request-form-heading-container-desktop-key"} id={"request-form-heading-container-desktop-key"} className="col-12 request-form-heading-container-desktop">
+       {getHeading()}
+      </div>
      </>
     ) : (
-     <h4>{"Header Image not available."}</h4>
+     <h4 key={"header-image-error-msg-key"} id={"header-image-error-msg-key"}>
+      {"Header Image not available."}
+     </h4>
     )}
    </div>
 
    {formJsonState !== null && formJsonState !== undefined ? (
     <>
-     <IconPanel />
-     <div className="row request-form-container-row">
+     <IconPanel key={"Icon-panel-key"} />
+     <div key={"request-form-container-row-key"} id={"request-form-container-row-key"} className="row request-form-container-row">
       <FormContext.Provider value={{ handleChange }}>
-       <div className="col-10 col-m-12 request-form-container">
+       <div key={"request-form-container-key"} id={"request-form-container-key"} className="col-10 col-m-12 request-form-container">
         <form>
-         <div className="row">
-          {formJsonState?.data["0"]?.formData?.formPages[0]?.sections.map((section) => {
+         <div id={"section-row-key"} key={"section-row-key"} className="row">
+          {formJsonState?.data["0"]?.formData?.formPages[0]?.sections.map((section, sectionIdex) => {
            return (
-            <div className="col-12 col-m-12">
+            <div id={"section-col-" + section?.sectionID + "-" + sectionIdex} key={"section-col-" + section?.sectionID + "-" + sectionIdex} className="col-12 col-m-12">
              <Section key={section?.sectionID} sectionDetails={section}></Section>
             </div>
            );
           })}
          </div>
-         <div className="row">
-          <div className="col-12">
-           <UploadPhoto />
+         <div id={"upload-photo-row-key"} key={"upload-photo-row-key"} className="row">
+          <div id={"upload-photo-col-key"} key={"upload-photo-col-key"} className="col-12">
+           <UploadPhoto key={"upload-photo-key"} />
           </div>
          </div>
-         <div className="row">
-          <div className="col-12">
-           <PromoCode />
+         <div id={"promo-code-row-key"} key={"promo-code-row-key"} className="row">
+          <div id={"promo-code-col-key"} key={"promo-code-col-key"} className="col-12">
+           <PromoCode key={"promo-code-key"} />
           </div>
          </div>
 
-         <div className="row">
-          <div className="col-12  submit-button-container">
-           <input type={"submit"} value={"Submit"} onSubmit={(e) => handleSubmit(e)} className="submit-button"></input>
+         <div key={"submit-btn-row-key"} id={"submit-btn-row-key"} className="row">
+          <div key={"submit-btn-col-key"} id={"submit-btn-col-key"} className="col-12  submit-button-container">
+           <input key={"submit-btn-key"} id={"submit-btn-key"} type={"submit"} value={"Submit"} onSubmit={(e) => handleSubmit(e)} className="submit-button"></input>
           </div>
          </div>
         </form>
@@ -199,9 +207,9 @@ const RequestForm = ({ match }) => {
     </div>
    )}
 
-   <div className="row">
-    <div className="col-12 footer-col">
-     <PageFooter />
+   <div key={"page-footer-row-key"} id={"page-footer-row-key"} className="row">
+    <div key={"page-footer-col-key"} id={"page-footer-col-key"} className="col-12 footer-col">
+     <PageFooter key={"page-footer-key"} />
     </div>
    </div>
   </>

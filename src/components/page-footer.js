@@ -17,13 +17,13 @@ const PageFooter = () => {
 
     <div className={"col-m-12 col-5 link-container"}>
      <div className="footer-links">
-      <a href={"#"}>How it works</a>
+      <a href={"?"}>How it works</a>
       <span> </span>
-      <a href={"#"}>Contact Us</a>
+      <a href={"?"} >Contact Us</a>
       <span>|</span>
-      <a href={"#"}>Privacy Policy</a>
-      <span> </span>
-      <a href={"#"}>Terms of Use</a>
+      <a href={"?"}>Privacy Policy</a>
+      <span> </span>+
+      <a href={"?"}>Terms of Use</a>
      </div>
     </div>
     <div className={"col-m-12 col-4 copyright-container"}>

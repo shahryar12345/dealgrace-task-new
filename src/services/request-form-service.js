@@ -1,4 +1,4 @@
-import { getApiURL } from "../api/apilists";
+//import { getApiURL } from "../api/apilists";
 import { formJson } from "../services/formJson";
 import { categoryJson, serviceJson } from "../services/imageJson";
 

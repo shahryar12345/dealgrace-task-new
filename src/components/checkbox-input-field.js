@@ -5,6 +5,7 @@ const CheckboxInputField = ({ fieldDetail, type, sectionId }) => {
  const [checkboxKey, setCheckboxKey] = useState(1);
  useEffect(() => {
   setCheckboxKey(checkboxKey + 1);
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [fieldDetail.value]);
 
  return (
