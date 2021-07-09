@@ -172,10 +172,8 @@
   margin-bottom: 0px;
  }
 
- .blue-bold-text {
-  color: #00a6f9;
- }
-
+ 
+ 
  .text-input-field {
   width: 100%;
   line-height: 55px;
@@ -271,6 +269,11 @@
   border: 1px solid red;
   background-color: #fafafb;
  }
+
+ .blue-bold-text {
+  color: #00a6f9;
+ }
+ 
 
  .requiredIcon {
   font-size: 29px;
@@ -553,6 +556,15 @@
  .form-loading-text-container {
   text-align: center;
   margin-top: 50px;
+ }
+
+ /* Search icon */
+ .search-Icon-Container
+ {
+  display: block;
+  position: absolute;
+  right: 36px;
+  top: 28px;
  }
 }
 
@@ -902,5 +914,11 @@
 
  .requiredIcon{
    top: 62px;
+ }
+
+ /* Search icon */
+ .search-Icon-Container
+ {
+   display: none;
  }
 }
