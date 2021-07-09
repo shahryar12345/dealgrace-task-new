@@ -5,7 +5,7 @@ import peopleIcon from "../images/people.svg";
 
 const IconPanel = () => {
  return (
-  <div className="col-3 request-form-sidebar">
+  <div className="col-2 request-form-sidebar">
    <div className="row">
     <div className="col-12">
      <p className="side-bar-heading">

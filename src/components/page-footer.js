@@ -22,7 +22,7 @@ const PageFooter = () => {
       <a href={"?"} >Contact Us</a>
       <span>|</span>
       <a href={"?"}>Privacy Policy</a>
-      <span> </span>+
+      <span> </span>
       <a href={"?"}>Terms of Use</a>
      </div>
     </div>
