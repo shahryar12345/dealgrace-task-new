@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* .required
+{
+    color: red;
+} */
+
+/* form label.required:after
+{
+    color: red;
+    content: " *";
+} */
+
+/* form input[required=required]:after,
+form select[required=required]:after,
+form textarea[required=required]:after
+{
+    color: red;
+    content: " *";
+} */
+
+
+    /* .errspan {
+        float: right;
+        margin-right: 6px;
+        margin-top: -20px;
+        position: relative;
+        z-index: 2;
+        color: red;
+    }
+
+    .errspan {
+      float: right;
+      margin-right: 6px;
+      margin-top: -20px;
+      position: relative;
+      z-index: 2;
+      color: red;
+  } */
+
+  .input-wrapper {
+    display:inline-block;
+    position: relative
+}
+.input-wrapper:after {
+    font-family: 'FontAwesome';
+    content: '\f274';
+    position: absolute;
+    right: 6px;
+}
+
+
+.input-icon{
+  position: absolute;
+  left: 3px;
+  top: calc(50% - 0.5em); /* Keep icon in center of input, regardless of the input height */
+}
+input{
+  padding-left: 17px;
+}
+.input-wrapper{
+  position: relative;
+}
